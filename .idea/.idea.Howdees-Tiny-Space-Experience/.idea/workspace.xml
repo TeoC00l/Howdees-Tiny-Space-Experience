@@ -10,17 +10,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Teodor.Tysklind/Documents/GitHub/Howdees-Tiny-Space-Experience/Assets/Scripts/Asteroids/Asteroid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Teodor.Tysklind/Documents/GitHub/Howdees-Tiny-Space-Experience/Assets/Scripts/Asteroids/Asteroid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Teodor.Tysklind/Documents/GitHub/Howdees-Tiny-Space-Experience/Assets/Scripts/Asteroids/Asteroid.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager3D.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager Scripts/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Debris.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/DebrisSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Asteroid.cs" />
       </list>
     </option>
@@ -64,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603107272743</updated>
       <workItem from="1603107276991" duration="3544000" />
+      <workItem from="1603118270175" duration="2453000" />
     </task>
     <servers />
   </component>
@@ -84,9 +82,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="210" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603109070121" />
-    <state x="682" y="433" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603109403439">
+    <state x="682" y="433" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603119185180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="682" y="433" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603109403439" />
+    <state x="682" y="433" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603119185180" />
   </component>
 </project>

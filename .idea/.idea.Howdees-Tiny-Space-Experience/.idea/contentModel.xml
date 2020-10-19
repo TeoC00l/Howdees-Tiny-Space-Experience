@@ -54,7 +54,7 @@
             <e p="Asteroid.cs" t="Include" />
             <e p="AsteroidManager.cs" t="Include" />
             <e p="Crystal.cs" t="Include" />
-            <e p="Debris.cs" t="Include" />
+            <e p="DebrisSpawner.cs" t="Include" />
             <e p="Knockable.cs" t="Include" />
             <e p="MeteorManager.cs" t="Include" />
           </e>

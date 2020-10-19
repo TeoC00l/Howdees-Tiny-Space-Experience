@@ -3,20 +3,20 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Debris : MonoBehaviour
+public class DebrisSpawner : MonoBehaviour
 {
     private int noOfDebris;
     private GameObject[] debrisToSpawn;
-    [SerializeField] private int debrisPoolSize = 1000;
 
     [SerializeField] private int minNumberOfDebris = 5;
     [SerializeField] private int maxNumberOfDebris = 10;
-    
     [SerializeField] private float minDebrisSize = 0.01f;
     [SerializeField] private float maxDebrisSize = 0.1f;
-
     [SerializeField] private float minDebrisMagnitude = 7f;
     [SerializeField] private float maxDebrisMagnitude = 10f;
+    [SerializeField] private float torqueMagnitude = 10f;
+
+    [SerializeField] private int debrisPoolSize = 1000;
     
     [SerializeField] private GameObject debrisPrefab;
 
@@ -41,13 +41,13 @@ public class Debris : MonoBehaviour
             
             GameObject debris = PoolManager.Instance.ReuseObject(debrisPrefab, transform.position, Quaternion.identity);
             Rigidbody debrisbody = debris.GetComponent<Rigidbody>();
-
+            
             debris.transform.localScale = scale;
             
             Vector3 velocity = Random.insideUnitCircle * Random.Range(minDebrisSize, maxDebrisMagnitude);
             debrisbody.velocity = velocity;
             debrisbody.mass = debrisSize;
-            debrisbody.AddTorque(transform.forward * 10f);
+            debrisbody.AddTorque(transform.forward * torqueMagnitude);
         }
     }
 }

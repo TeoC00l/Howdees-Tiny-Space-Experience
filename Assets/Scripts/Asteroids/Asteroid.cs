@@ -5,12 +5,13 @@ using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(DebrisSpawner))]
 public class Asteroid : Knockable
 {
     private Rigidbody body;
     private int noOfActiveCrystals = default;
     private Crystal[] crystals;
-    private Debris debris;
+    private DebrisSpawner debrisSpawner;
     private float diameter;
     
     [SerializeField] private float explosionMagnitude = 3f;
@@ -21,11 +22,12 @@ public class Asteroid : Knockable
     [SerializeField] private float explosionDelay = 0.5f;
     [SerializeField] private float restimulateVelocityThreshold = 0.2f;
     [SerializeField] private float restimulationVelocity = 0.3f;
+    [SerializeField] private
 
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
-        debris = GetComponent<Debris>();
+        debrisSpawner = GetComponent<DebrisSpawner>();
         crystals = GetComponentsInChildren<Crystal>();
 
         Assert.IsNotNull(crystals);
@@ -57,7 +59,7 @@ public class Asteroid : Knockable
             SoundManager.Instance.PlaySound("AsteroidExplosion", transform.position);
         }
         
-        debris.SpawnDebris();
+        debrisSpawner.SpawnDebris();
         gameObject.SetActive(false);
     }
 
