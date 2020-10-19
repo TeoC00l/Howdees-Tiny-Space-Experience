@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/sce_MainMenu.unity
     guid: b02bccdb8d47a7a4aa4d1619fc165a9e
   - enabled: 1
-    path: Assets/Debug/DesignerTestscene.unity
+    path: Assets/Scenes/DesignerTestscene.unity
     guid: 82cfa438e30f4924d999773c7f7beb78
   m_configObjects: {}
