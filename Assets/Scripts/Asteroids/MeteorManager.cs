@@ -17,7 +17,7 @@ public class MeteorManager : MonoBehaviour
     private int noOfPointsX;
     private Vector3[] positions;
     private float timer;
-    private AsteroidManager3D asteroidManager;
+    private AsteroidManager asteroidManager;
     
     private void OnValidate()
     {
@@ -66,7 +66,7 @@ public class MeteorManager : MonoBehaviour
     {
         intervalInFrames = (int) (interval / Time.deltaTime);
         timer = intervalInFrames;
-        asteroidManager = GetComponent<AsteroidManager3D>();
+        asteroidManager = GetComponent<AsteroidManager>();
     }
 
     private void Update()

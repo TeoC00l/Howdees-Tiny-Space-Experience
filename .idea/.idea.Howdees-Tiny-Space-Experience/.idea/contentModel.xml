@@ -51,8 +51,8 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Asteroids" t="Include">
-            <e p="Asteroid3D.cs" t="Include" />
-            <e p="AsteroidManager3D.cs" t="Include" />
+            <e p="Asteroid.cs" t="Include" />
+            <e p="AsteroidManager.cs" t="Include" />
             <e p="Crystal.cs" t="Include" />
             <e p="Debris.cs" t="Include" />
             <e p="Knockable.cs" t="Include" />

@@ -9,20 +9,18 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    private Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
-    private Dictionary<string, float> volume = new Dictionary<string, float>();
-    private Dictionary<string, AudioMixerGroup> audioMixerGroups = new Dictionary<string, AudioMixerGroup>();
+    private Dictionary<string, Sound> sounds = new Dictionary<string, Sound>();
 
     private GameObject soundObject;
     private Transform mainCameraTransform;
 
-    [SerializeField] private KeyValue[] soundList;
+    [SerializeField] private Sound[] soundList;
     [SerializeField] private AudioMixer mixer;
     
     public static SoundManager Instance;
 
     [Serializable]
-    public struct KeyValue
+    public struct Sound
     {
         public string audioName;
         public AudioClip audioClip;
@@ -43,9 +41,7 @@ public class SoundManager : MonoBehaviour
 
         for (int i = 0; i < soundList.Length; i++)
         {
-            sounds.Add(soundList[i].audioName, soundList[i].audioClip);
-            volume.Add(soundList[i].audioName, soundList[i].volume);
-            audioMixerGroups.Add(soundList[i].audioName, soundList[i].mixerGroup);
+            sounds.Add(soundList[i].audioName, soundList[i]);
         }
 
         mainCameraTransform = Camera.main.transform;
@@ -55,9 +51,10 @@ public class SoundManager : MonoBehaviour
     {
         GameObject audioObject = PoolManager.Instance.ReuseObject(soundObject, position, Quaternion.identity);
         AudioSource audioSource = audioObject.GetComponent<AudioSource>();
-        audioSource.clip = sounds[soundName];
-        audioSource.volume = volume[soundName];
-        audioSource.outputAudioMixerGroup = audioMixerGroups[soundName];
+        
+        audioSource.clip = sounds[soundName].audioClip;
+        audioSource.volume = sounds[soundName].volume;
+        audioSource.outputAudioMixerGroup = sounds[soundName].mixerGroup;
 
         audioSource.loop = false;
         audioSource.Play();
@@ -73,9 +70,10 @@ public class SoundManager : MonoBehaviour
         loopingSoundObject.transform.SetParent(mainCameraTransform);
 
         AudioSource audioSource = loopingSoundObject.GetComponent<AudioSource>();
-        audioSource.clip = sounds[soundName];
-        audioSource.volume = volume[soundName];
-        audioSource.outputAudioMixerGroup = audioMixerGroups[soundName];
+        
+        audioSource.clip = sounds[soundName].audioClip;
+        audioSource.volume = sounds[soundName].volume;
+        audioSource.outputAudioMixerGroup = sounds[soundName].mixerGroup;
         
         audioSource.loop = true;
         audioSource.Play();
@@ -98,22 +96,5 @@ public class SoundManager : MonoBehaviour
 
         float mixerVolume = Mathf.Lerp(minValue, maxValue, volumeInPercent);
         mixer.SetFloat("MasterVolume", mixerVolume);
-    }
-
-    public float GetCurrentMasterVolume()
-    {
-        float masterVolume;
-        mixer.GetFloat("MasterVolume", out masterVolume);
-
-        return masterVolume;
-    }
-
-    public float GetLerpedMasterVolume()
-    {
-        float minValue = -80;
-        float maxValue = 20;
-        
-        float masterVolume = GetCurrentMasterVolume();
-        return Mathf.InverseLerp(minValue, maxValue, masterVolume);
     }
 }

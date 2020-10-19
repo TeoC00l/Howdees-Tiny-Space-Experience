@@ -8,7 +8,7 @@ public class Crystal : MonoBehaviour
 {
     private int minerals;
     
-    private Asteroid3D asteroid;
+    private Asteroid asteroid;
 
     [SerializeField] private ParticleSystem onDestroyParticle;
     [SerializeField] private int minMinerals = default;
@@ -32,7 +32,7 @@ public class Crystal : MonoBehaviour
         glow.SetRenderer(crystalGraphicsVariants[graphicSelected]);
         glow.Setup();
 
-        asteroid = GetComponentInParent<Asteroid3D>();
+        asteroid = GetComponentInParent<Asteroid>();
 
         colliders = GetComponents<Collider>();
     }

@@ -5,10 +5,10 @@ using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Asteroid3D : Knockable
+public class Asteroid : Knockable
 {
     private Rigidbody body;
-    private int noOfActiveCrystals = 0;
+    private int noOfActiveCrystals = default;
     private Crystal[] crystals;
     private Debris debris;
     private float diameter;
@@ -93,9 +93,6 @@ public class Asteroid3D : Knockable
         }
     }
 
-
-
-
     public void SetAsteroidSize(float diameter, float mass)
     {
         this.diameter = diameter;
@@ -111,8 +108,7 @@ public class Asteroid3D : Knockable
             crystal.SetPosition();
         }
     }
-    
-    
+
     private void RestimulateVelocity()
     {
         if (body.velocity.magnitude > restimulateVelocityThreshold)

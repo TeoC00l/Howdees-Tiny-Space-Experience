@@ -3,13 +3,14 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class AsteroidManager3D : MonoBehaviour
+public class AsteroidManager : MonoBehaviour
 {
     private PoolManager poolManager;
-    private Vector2[] rightAngleDirections = new Vector2[] {Vector2.up, Vector2.right, Vector2.left, Vector2.down};
     
     [SerializeField] private GameObject asteroidPrefab;
     [SerializeField] private int asteroidPoolSize = 100;
+    
+    [Tooltip("Parent for all of the gameobject (transforms) that indicate asteroid spawn positions")]
     [SerializeField] private GameObject spawnPositionsParent;
     
     [Header("Settings for Asteroids spawning on start")]
@@ -54,7 +55,7 @@ public class AsteroidManager3D : MonoBehaviour
 
             float mass = size * massToSizeMultiplier;
 
-            asteroid.GetComponent<Asteroid3D>().SetAsteroidSize(size, mass);
+            asteroid.GetComponent<Asteroid>().SetAsteroidSize(size, mass);
         }
     }
 
@@ -69,16 +70,14 @@ public class AsteroidManager3D : MonoBehaviour
     public void SpawnAsteroid(Vector3 spawnPosition, Vector3 velocity)
     {
         GameObject asteroid = poolManager.ReuseObject(asteroidPrefab, spawnPosition, Quaternion.identity);
-
         Rigidbody body =  asteroid.GetComponent<Rigidbody>();
+        
         body.velocity = randomizeVelocity();
         body.AddTorque(transform.forward * startTorqueMagnitude);
-
         size = Random.Range(minSize, maxSize);
-
         float mass = size * massToSizeMultiplier;
 
-        asteroid.GetComponent<Asteroid3D>().SetAsteroidSize(size, mass);
+        asteroid.GetComponent<Asteroid>().SetAsteroidSize(size, mass);
 
         body.velocity = velocity;
     }
