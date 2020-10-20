@@ -15,9 +15,10 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager3D.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager Scripts/SoundManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Debris.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/DebrisSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Explosion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Asteroid.cs" />
       </list>
     </option>
@@ -62,6 +63,7 @@
       <updated>1603107272743</updated>
       <workItem from="1603107276991" duration="3544000" />
       <workItem from="1603118270175" duration="2453000" />
+      <workItem from="1603176000193" duration="10331000" />
     </task>
     <servers />
   </component>

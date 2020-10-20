@@ -81,5 +81,4 @@ public class AsteroidManager : MonoBehaviour
 
         body.velocity = velocity;
     }
-
 }

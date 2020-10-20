@@ -5,29 +5,33 @@ using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(DebrisSpawner))]
+[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Explosion))]
 public class Asteroid : Knockable
 {
-    private Rigidbody body;
     private int noOfActiveCrystals = default;
     private Crystal[] crystals;
     private DebrisSpawner debrisSpawner;
-    private float diameter;
+    private Explosion explosion;
+    private Rigidbody body;
     
-    [SerializeField] private float explosionMagnitude = 3f;
+    [Header("Crystal Properties")]
+    private float crystalSize = 1f;
+    
+    [Tooltip("Chance of a crystal spawning on each of the asteroid crystal slots. 0 = none, 1 = always")]
+    [Range(0f, 1f)][SerializeField] private float crystalSpawnChance = 0.5f;
 
-    [SerializeField] private float crystalsSize = 10f;
-    [SerializeField] private float explosionOffset = 10f;
-    [SerializeField] private GameObject ExplosionAnimationObject;
-    [SerializeField] private float explosionDelay = 0.5f;
+    [Header("Velocity Properties")]
+    [Tooltip("Restimulates velocity when velocity falls below this magnitude")]
     [SerializeField] private float restimulateVelocityThreshold = 0.2f;
+    
+    [Tooltip("Restimulates velocity by this magnitude")]
     [SerializeField] private float restimulationVelocity = 0.3f;
-    [SerializeField] private
-
+    
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
-        debrisSpawner = GetComponent<DebrisSpawner>();
+        explosion = GetComponent<Explosion>();
         crystals = GetComponentsInChildren<Crystal>();
 
         Assert.IsNotNull(crystals);
@@ -37,31 +41,6 @@ public class Asteroid : Knockable
     {
         RestimulateVelocity();
     }
-    
-    private void Explode()
-    {
-        Collider[] collidersHit = Physics.OverlapSphere(transform.position, transform.localScale.x / 2 + explosionOffset);
-        
-        foreach (Collider collider in collidersHit)
-        {
-            Knockable knockable = collider.gameObject.GetComponent<Knockable>();
-            
-            if (knockable != null)
-            {
-                collider.gameObject.GetComponent<Knockable>().Knock((collider.transform.position-transform.position) * explosionMagnitude * 2);
-            }
-        }
-        
-        if (ExplosionAnimationObject != null)
-        {
-            GameObject explosionAnimationObject = Instantiate(ExplosionAnimationObject, transform.position, Quaternion.identity);
-            explosionAnimationObject.transform.localScale = new Vector3(diameter/2, diameter/2, diameter/2);
-            SoundManager.Instance.PlaySound("AsteroidExplosion", transform.position);
-        }
-        
-        debrisSpawner.SpawnDebris();
-        gameObject.SetActive(false);
-    }
 
     private void OnEnable()
     {
@@ -69,13 +48,12 @@ public class Asteroid : Knockable
         
         foreach (Crystal crystal in crystals)
         {
-            crystal.transform.localScale = new Vector3(crystalsSize,crystalsSize,crystalsSize);
             crystal.gameObject.SetActive(false);
         }
         
         foreach (Crystal crystal in crystals)
         {
-            if (Random.Range(0f, 1f) < 0.5f)
+            if (Random.Range(0f, 1f) < crystalSpawnChance)
             {
                 crystal.gameObject.SetActive(true);
                 noOfActiveCrystals++;
@@ -91,21 +69,20 @@ public class Asteroid : Knockable
 
         if (noOfActiveCrystals == 0)
         {
-            Invoke("Explode", explosionDelay);
+            explosion.ExplodeAfterDelay();
         }
     }
 
     public void SetAsteroidSize(float diameter, float mass)
     {
-        this.diameter = diameter;
         transform.localScale = new Vector3(diameter, diameter, diameter);
         body.mass = mass;
 
         foreach (Crystal crystal in crystals)
         {
             float asteroidSize = transform.localScale.x;
-            float crystalSize = crystal.transform.localScale.x / asteroidSize;
-            crystal.transform.localScale = new Vector3(crystalSize, crystalSize, crystalSize);
+            float scale = crystalSize / asteroidSize;
+            crystal.transform.localScale = new Vector3(scale, scale, scale);
             
             crystal.SetPosition();
         }
