@@ -10,18 +10,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidThrower.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager3D.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Manager Scripts/SoundManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Debris.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/DebrisSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Explosion.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/Asteroid.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/MeteorManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Asteroids/AsteroidThrower.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1j5wTgJboUClVbg90dF6tivAs4N" />
   <component name="ProjectViewState">
@@ -31,7 +27,9 @@
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -39,7 +37,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -48,7 +46,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -64,6 +62,7 @@
       <workItem from="1603107276991" duration="3544000" />
       <workItem from="1603118270175" duration="2453000" />
       <workItem from="1603176000193" duration="10331000" />
+      <workItem from="1630754946913" duration="9103000" />
     </task>
     <servers />
   </component>
